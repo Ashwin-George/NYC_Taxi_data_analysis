@@ -1,0 +1,34 @@
+CREATE TABLE nyc_taxi_cleaned (
+    VendorID VARCHAR(10),
+    tpep_pickup_datetime TIMESTAMP,
+    tpep_dropoff_datetime TIMESTAMP,
+    passenger_count SMALLINT,
+    trip_distance FLOAT4,
+    pickup_longitude FLOAT8,
+    pickup_latitude FLOAT8,
+    RateCodeID VARCHAR(10),
+    store_and_fwd_flag VARCHAR(5),
+    dropoff_longitude FLOAT8,
+    dropoff_latitude FLOAT8,
+    payment_type VARCHAR(10),
+    fare_amount FLOAT4,
+    extra FLOAT4,
+    mta_tax FLOAT4,
+    tip_amount FLOAT4,
+    tolls_amount FLOAT4,
+    improvement_surcharge FLOAT4,
+    total_amount FLOAT4,
+
+    -- Derived columns
+    pickup_datetime TIMESTAMP,
+    dropoff_datetime TIMESTAMP,
+    trip_duration FLOAT4,
+    pickup_hour SMALLINT,
+    pickup_dayofweek SMALLINT,
+    pickup_month SMALLINT,
+    is_tip_given SMALLINT,
+    trip_type VARCHAR(10),
+
+    -- Unique constraint to avoid duplicate ingestion
+    UNIQUE (pickup_datetime, dropoff_datetime, pickup_latitude, pickup_longitude)
+);
