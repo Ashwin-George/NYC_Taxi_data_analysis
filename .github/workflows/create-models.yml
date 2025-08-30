@@ -3,7 +3,7 @@ name: Create Initial Model
 on:
   push:
     branches:
-      - model-creation
+      - model-creation #model creation
   pull_request:
     branches:
       - model-creation
