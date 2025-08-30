@@ -1,9 +1,9 @@
 name: Create Initial Model
 
 on:
-  push:
+  pull_request:
     branches:
-      - model-creation
+      - model-creation #model creation
 
 jobs:
   build:
