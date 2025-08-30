@@ -3,7 +3,7 @@ name: Create Initial Model
 on:
   push:
     branches:
-      - creation
+      - model-creation
 
 jobs:
   build:
