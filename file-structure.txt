@@ -1,0 +1,24 @@
+nyc-taxi-fare/
+│── .github/
+│   └── workflows/
+│       ├── create-model.yml        # First-time training workflow (creation-branch)
+│       ├── retrain-model.yml       # Scheduled monthly retraining (dev-branch)
+│
+│── data/                           # Local testing data (small samples only)
+│   └── sample.csv
+│
+│── src/
+│   ├── __init__.py
+│   ├── preprocessing.py            # Cleaning + preprocessing functions
+│   ├── train.py                    # Training logic (loads from S3, trains, saves pickle)
+│   ├── predict.py                  # For local testing predictions
+│   └── utils.py                    # Helper functions (logging, S3 upload/download)
+│
+│── scripts/
+│   ├── create_models.py            # First-time run script (calls train + S3 upload)
+│   ├── retrain_models.py           # Retraining script (uses new data)
+│   └── fetch_data.py               # Optional: download latest data from S3
+│
+│── requirements.txt                # Python dependencies
+│── README.md                       # Project documentation
+│── .gitignore                      # Ignore virtual envs, large files, etc.
