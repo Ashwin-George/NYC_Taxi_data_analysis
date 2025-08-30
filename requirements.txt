@@ -1,3 +1,10 @@
 kafka-python~=2.2.13
 pandas~=2.3.0
 s3fs
+
+pandas
+numpy
+scikit-learn
+xgboost
+boto3
+joblib
