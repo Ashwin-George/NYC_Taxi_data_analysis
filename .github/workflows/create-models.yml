@@ -31,6 +31,16 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Run initial model creation
-        run: python -m scripts/create-models.py
+        run: python -m scripts.create_models
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
+
+      - name: Upload model artifacts (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: |
+            model.pkl
+            scaler.pkl
+            metadata.json
