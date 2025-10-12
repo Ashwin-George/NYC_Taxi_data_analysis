@@ -15,7 +15,7 @@ BUCKET="nyc.archive.data.storage"
 PREFIX = os.getenv("S3_PREFIX", "models/")
 DATA_KEY = os.getenv("DATA_KEY", "data/sample_retrain_check.csv")
 METADATA_KEY = os.path.join(PREFIX, "metadata.json")
-RETRAIN_THRESHOLD = 50000  # rows to trigger retraining
+RETRAIN_THRESHOLD = 1000  # rows to trigger retraining
 
 def load_metadata():
     """Load model metadata (row count, last trained) from S3"""
