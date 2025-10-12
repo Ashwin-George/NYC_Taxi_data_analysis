@@ -12,7 +12,7 @@ from src.utils import download_from_s3, upload_to_s3
 #     os.system(f"aws s3 cp s3://{BUCKET}/data/{S3_DATA_PATH} {DATA_PATH}")
 # BUCKET = os.getenv("S3_BUCKET")
 BUCKET="nyc.archive.data.storage"
-PREFIX = os.getenv("S3_PREFIX", "models/")
+PREFIX = os.getenv("S3_PREFIX", "models/nyc_taxi")
 DATA_KEY = os.getenv("DATA_KEY", "data/sample_retrain_check.csv")
 METADATA_KEY = os.path.join(PREFIX, "metadata.json")
 RETRAIN_THRESHOLD = 1000  # rows to trigger retraining
