@@ -1,10 +1,17 @@
 name: Retrain Taxi ML Model
 
+#on:
+#  schedule:
+#    # Run on the 1st of every month at 2 AM UTC
+#    - cron: "0 2 1 * *"
+#  workflow_dispatch: # allows manual trigger too
 on:
-  schedule:
-    # Run on the 1st of every month at 2 AM UTC
-    - cron: "0 2 1 * *"
-  workflow_dispatch: # allows manual trigger too
+  push:
+    branches:
+      - development #model creation
+  pull_request:
+    branches:
+      - development
 
 jobs:
   retrain:
@@ -25,10 +32,24 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run retrain script
+#    - name: Run retrain script
+#      env:
+#        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
+#      run: |
+#        python retrain-models.py
+        
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Run initial model creation
+      run: python scripts/retrain-models.py
       env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
-      run: |
-        python retrain-models.py
+        S3_BUCKET: ${{ secrets.S3_BUCKET }}
+        PYTHONPATH: "${{ github.workspace }}"
+
