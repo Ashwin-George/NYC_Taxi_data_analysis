@@ -10,9 +10,10 @@ from src.utils import download_from_s3, upload_to_s3
 #     S3_DATA_PATH = "yellow_tripdata-part-6.csv"
 #     DATA_PATH = "taxi_data.csv"
 #     os.system(f"aws s3 cp s3://{BUCKET}/data/{S3_DATA_PATH} {DATA_PATH}")
-BUCKET = os.getenv("S3_BUCKET")
+# BUCKET = os.getenv("S3_BUCKET")
+BUCKET="nyc.archive.data.storage"
 PREFIX = os.getenv("S3_PREFIX", "models/")
-DATA_KEY = os.getenv("DATA_KEY", "data/nyc_taxi_data.parquet")
+DATA_KEY = os.getenv("DATA_KEY", "data/sample_retrain_check.csv")
 METADATA_KEY = os.path.join(PREFIX, "metadata.json")
 RETRAIN_THRESHOLD = 50000  # rows to trigger retraining
 
@@ -34,10 +35,10 @@ def save_metadata(row_count):
 
 def retrain_if_needed():
     # 1. Download latest dataset
-    local_file = "latest_data.parquet"
+    local_file = "latest_data.csv"
     download_from_s3(BUCKET, DATA_KEY, local_file)
-    df = pd.read_parquet(local_file)
-
+    # df = pd.read_parquet(local_file)
+    df=pd.read_csv(local_file)
     # 2. Load metadata
     metadata = load_metadata()
     prev_count = metadata.get("last_row_count", 0)
