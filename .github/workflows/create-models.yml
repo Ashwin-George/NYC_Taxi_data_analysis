@@ -38,6 +38,7 @@ jobs:
         run: python scripts/create-models.py
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          PYTHONPATH: "${{ github.workspace }}"
 
       - name: Upload model artifacts (optional)
         if: always()
