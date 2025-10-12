@@ -10,7 +10,8 @@ from src.utils import download_from_s3, upload_to_s3
 #     S3_DATA_PATH = "yellow_tripdata-part-6.csv"
 #     DATA_PATH = "taxi_data.csv"
 #     os.system(f"aws s3 cp s3://{BUCKET}/data/{S3_DATA_PATH} {DATA_PATH}")
-BUCKET = os.getenv("S3_BUCKET")
+# BUCKET = os.getenv("S3_BUCKET")
+BUCKET="nyc.archive.data.storage"
 PREFIX = os.getenv("S3_PREFIX", "models/")
 DATA_KEY = os.getenv("DATA_KEY", "data/nyc_taxi_data.parquet")
 METADATA_KEY = os.path.join(PREFIX, "metadata.json")
