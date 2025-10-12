@@ -1,13 +1,20 @@
 name: Create Initial Model
 
 on:
-  pull_request:
+  push:
     branches:
       - model-creation #model creation
+  pull_request:
+    branches:
+      - model-creation
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -28,6 +35,17 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Run initial model creation
-        run: python scripts/create_models.py
+        run: python scripts/create-models.py
         env:
           S3_BUCKET: ${{ secrets.S3_BUCKET }}
+          PYTHONPATH: "${{ github.workspace }}"
+
+      - name: Upload model artifacts (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trained-model
+          path: |
+            model.pkl
+            scaler.pkl
+            metadata.json
