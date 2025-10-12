@@ -29,7 +29,7 @@ It integrates **real-time data streaming, batch processing, analytics, and predi
 
 6. **Deployment**
    - **Flask API** fetches the latest ML model from S3 and exposes REST endpoints for predictions.
-
+![img.png](img.png)
 ---
 
 ## ⚙️ Tech Stack
