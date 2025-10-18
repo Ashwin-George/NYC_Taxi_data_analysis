@@ -1,12 +1,12 @@
 # NYC Taxi Analysis – Data Engineering & Machine Learning Pipeline
 
-## 📌 Project Overview
+##  Project Overview
 This project demonstrates an **end-to-end data pipeline** and **machine learning system** built on the **NYC Taxi dataset**.  
 It integrates **real-time data streaming, batch processing, analytics, and predictive modeling** into a unified architecture.
 
 ---
 
-## 🚀 Architecture Workflow
+##  Architecture Workflow
 1. **Data Ingestion**
    - **Kafka** simulates real-time taxi trip events.
    - **Amazon S3** stores historical batch data.
@@ -32,7 +32,7 @@ It integrates **real-time data streaming, batch processing, analytics, and predi
 ![img.png](img.png)
 ---
 
-## ⚙️ Tech Stack
+##  Tech Stack
 - **Data Streaming:** Apache Kafka  
 - **Storage & ETL:** AWS S3, AWS Glue, Amazon Redshift  
 - **Visualization:** Power BI  
@@ -42,7 +42,7 @@ It integrates **real-time data streaming, batch processing, analytics, and predi
 
 ---
 
-## 📊 Features
+##  Features
 - Real-time + batch data ingestion pipeline.  
 - Automated ETL from S3 to Redshift for analytics.  
 - Interactive Power BI dashboard for insights.  
@@ -51,12 +51,12 @@ It integrates **real-time data streaming, batch processing, analytics, and predi
 
 ---
 
-## 🖼️ Architecture Diagram
+##  Architecture Diagram
 *(Add your architecture diagram here if available – Kafka → S3 → Glue → Redshift → Power BI / ML → Flask API)*  
 
 ---
 
-## 🚦 How to Run
+##  How to Run
 1. Start Kafka to simulate streaming data.  
 2. Load historical data into S3.  
 3. Run Glue jobs to populate Redshift.  
@@ -68,7 +68,7 @@ It integrates **real-time data streaming, batch processing, analytics, and predi
 
 ![powerbi.png](screenshots/powerbi.png)
 
-## 📌 Future Improvements
+##  Future Improvements
 - Add Airflow for workflow orchestration.  
 - Deploy Flask API with Docker + AWS ECS/EKS.  
 - Enhance ML pipeline with feature engineering and hyperparameter tuning.  
