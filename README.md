@@ -60,8 +60,10 @@ It integrates **real-time data streaming, batch processing, analytics, and predi
 6. Run Flask API to serve predictions.  
 
 ---
-
+## Results
 ![powerbi.png](screenshots/powerbi.png)
+---
+![img_2.png](screenshots/result_2.png)
 
 ##  Future Improvements
 - Add Airflow for workflow orchestration.  
