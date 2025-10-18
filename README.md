@@ -51,11 +51,6 @@ It integrates **real-time data streaming, batch processing, analytics, and predi
 
 ---
 
-##  Architecture Diagram
-*(Add your architecture diagram here if available – Kafka → S3 → Glue → Redshift → Power BI / ML → Flask API)*  
-
----
-
 ##  How to Run
 1. Start Kafka to simulate streaming data.  
 2. Load historical data into S3.  
